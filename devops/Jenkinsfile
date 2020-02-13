@@ -45,10 +45,6 @@ node {
         server.upload(uploadSpec)
         
         }
-     
-   stage('Docker-Stage-Deployment') {
-   sh label: 'DOCKER DEPLOYMENT', script: 'docker-compose up -d --build'
-  }
 	 
 
 
