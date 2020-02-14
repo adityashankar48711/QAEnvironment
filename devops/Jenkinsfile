@@ -39,12 +39,27 @@ node {
         def server= Artifactory.server 'Artifactory'
                     def uploadSpec= """{
                         "files": [{
-                        "pattern": "/root/.jenkins/workspace/Devops_Final_Demo/devops/target/*.war",
+                        "pattern": "/root/.jenkins/workspace/QAEnvironment/devops/target/*.war",
                         "target": "petclinic"}]
                     }"""
         server.upload(uploadSpec)
         
         }
+	 
+	 stage('Jfrog Artifactory download'){
+    def server= Artifactory.server 'Artifactory'
+    def downloadSpec = """{
+    "files": [
+    {
+      "pattern": "petclinic/*.war",
+      "target": "/home/mtadminnuvepro/artifacts/"
+      
+    }
+    ]
+    }"""
+    server.download(downloadSpec)
+   
+}
 	 
 
 
